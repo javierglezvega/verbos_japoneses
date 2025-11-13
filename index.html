@@ -515,22 +515,20 @@
         </div>
         <div class="modes">
           <button
-            class="mode-btn is-primary is-disabled"
-            id="mode-escuchar"
-            type="button"
-            disabled
-          >
-            Escuchar
-            <span>jp → es</span>
-          </button>
-          <button
             class="mode-btn is-disabled"
             id="mode-traducir"
             type="button"
             disabled
           >
-            Traducir
-            <span>es → jp</span>
+            TRADUCIR
+          </button>
+          <button
+            class="mode-btn is-disabled"
+            id="mode-escuchar"
+            type="button"
+            disabled
+          >
+            ESCUCHAR
           </button>
           <button
             class="mode-btn is-disabled"
@@ -538,8 +536,7 @@
             type="button"
             disabled
           >
-            Leer
-            <span>jp → es (lectura)</span>
+            LEER
           </button>
         </div>
         <div class="status-bar" id="status-bar">
@@ -1008,7 +1005,7 @@
 
       const totalSelectedPhrases = getActivePhrases().length;
       if (totalSelectedPhrases > 0) {
-        statusCounter.textContent = `${totalSelectedPhrases} frases posibles`;
+        statusCounter.textContent = `${totalSelectedPhrases} frases seleccionadas`;
       } else {
         statusCounter.textContent = "";
       }
