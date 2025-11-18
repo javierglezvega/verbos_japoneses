@@ -1482,6 +1482,40 @@
     btnWrong.addEventListener("click", () => {
       markAnswer(false);
     });
+	
+	// ---------- Atajos de teclado (solo en pantalla de estudio) ----------
+
+	document.addEventListener("keydown", (e) => {
+	  // Solo si estamos en la pantalla de estudio
+	  if (studyScreen.style.display === "none") return;
+
+	  // Evitar repetición al dejar pulsada una tecla
+	  if (e.repeat) return;
+
+	  // Barra espaciadora
+	  if (e.key === " " || e.code === "Space") {
+	    e.preventDefault(); // evita que haga scroll
+
+	    // Si no hay frase actual, no hacemos nada
+	    if (!currentPhrase) return;
+
+	    if (!isRevealed) {
+	      // Aún no revelada → hace clic en "Revelar"
+	      btnReveal.click();
+	    } else {
+	      // Ya revelada → hace clic en "He acertado"
+	      btnCorrect.click();
+	    }
+	  }
+
+	  // Tecla "m" o "M" → "No la sabía" (solo si está revelada)
+	  if (e.key === "m" || e.key === "M") {
+	    if (!currentPhrase) return;
+	    if (!isRevealed) return;
+	    btnWrong.click();
+	  }
+	});
+	
 
     // ==========
     // Inicializar
