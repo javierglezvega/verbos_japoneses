@@ -1434,13 +1434,18 @@
       }
     }
 
-    function renderCardRevealed() {
-      if (!currentPhrase) return;
-      studyMain.textContent = currentPhrase.jp;
-      studySub.textContent = currentPhrase.es;
-      btnRepeatAudio.style.display = "inline-flex";
-      playAudioForCurrent();
-    }
+	function renderCardRevealed() {
+	  if (!currentPhrase) return;
+	  studyMain.textContent = currentPhrase.jp;
+	  studySub.textContent = currentPhrase.es;
+	  btnRepeatAudio.style.display = "inline-flex";
+
+	  // En modo ESCUCHAR no reproducimos automáticamente el audio al revelar
+	  if (studyMode !== "escuchar") {
+	    playAudioForCurrent();
+	  }
+	}
+    
 
     function pickNextPhrase() {
       if (remainingPhrases.length === 0) {
